@@ -22,6 +22,10 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
+<<<<<<< HEAD
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to quiz-engine!');
+=======
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to offline-quiz-engine!');
+>>>>>>> 2804284384fd17627747f2f6ef168725224505e3
   }));
 });
