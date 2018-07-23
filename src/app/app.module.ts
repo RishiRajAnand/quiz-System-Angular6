@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { TrueFalseComponent } from './true-false/true-false.component';
 import { MultipleChoiceComponent } from './multiple-choice/multiple-choice.component';
@@ -15,7 +18,7 @@ import { FigureLabelingExerciseComponent } from './figure-labeling-exercise/figu
 import { InlineChoiceComponent } from './inline-choice/inline-choice.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-// import { SharedService } from './shared/shared.service';
+ import { SharedService } from './shared/shared.service';
 
 @NgModule({
   declarations: [
@@ -35,9 +38,14 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
