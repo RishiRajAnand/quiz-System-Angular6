@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { SharedService } from './shared/shared.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+    title = 'app';
+    constructor( private appService : SharedService){}
+
+    ngOnInit(){
+        this.appService.unzip().subscribe(data => {});
+    }
 }
