@@ -15,7 +15,7 @@ import { InlineChoiceComponent } from '../quiz-question-types/inline-choice/inli
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/',
+    redirectTo: 'FillInTheBlanks',
     pathMatch: 'full'
   },
   {path: 'ClinicalSymptoms', component: ClinicalSymptomsComponent},
