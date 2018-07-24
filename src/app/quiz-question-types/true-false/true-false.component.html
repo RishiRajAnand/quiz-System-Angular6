@@ -1,3 +1,8 @@
-<p>
-  true-false works!
-</p>
+<div class="row" *ngIf="sharedService.qns">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{sharedService.qns[3].label}}</h5>
+      <p class="card-body"></p>
+    </div>
+  </div>
+</div>
