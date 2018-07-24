@@ -16,9 +16,9 @@ import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
 import { HotSpotComponent } from './hot-spot/hot-spot.component';
 import { FigureLabelingExerciseComponent } from './figure-labeling-exercise/figure-labeling-exercise.component';
 import { InlineChoiceComponent } from './inline-choice/inline-choice.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './core/footer/footer.component';
  import { SharedService } from './shared/shared.service';
+import { CoreComponent } from './core/core.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +34,9 @@ import { FooterComponent } from './footer/footer.component';
     HotSpotComponent,
     FigureLabelingExerciseComponent,
     InlineChoiceComponent,
-    HeaderComponent,
     routingComponents,
-    FooterComponent
+    FooterComponent,
+    CoreComponent
   ],
   imports: [
     BrowserModule,
