@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing/app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { TrueFalseComponent } from './true-false/true-false.component';
 import { MultipleChoiceComponent } from './multiple-choice/multiple-choice.component';
@@ -35,6 +35,7 @@ import { FooterComponent } from './footer/footer.component';
     FigureLabelingExerciseComponent,
     InlineChoiceComponent,
     HeaderComponent,
+    routingComponents,
     FooterComponent
   ],
   imports: [
