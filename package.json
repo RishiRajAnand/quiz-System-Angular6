@@ -1,13 +1,16 @@
 {
   "name": "quiz-engine",
   "version": "0.0.0",
+  "main": "electron-main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron": "electron .",
+    "electron-build": "ng build --prod && electron ."
   },
   "private": true,
   "dependencies": {
@@ -32,7 +35,7 @@
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.2.2",
     "stream": "0.0.2",
-    "typescript": "^2.9.2",
+    "typescript": "^2.7.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
@@ -45,6 +48,7 @@
     "@types/jquery": "^2.0.42",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
+    "electron": "^2.0.5",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^2.0.5",

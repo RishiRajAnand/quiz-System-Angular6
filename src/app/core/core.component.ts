@@ -13,6 +13,7 @@ export class CoreComponent implements OnInit {
     private service: IndexedDBService;       
     students: any  = [];
     newStudent: any = new WkQuiz();
+    oldStudent: any = new WkQuiz();
 
 
     constructor(service: IndexedDBService) {
@@ -46,10 +47,61 @@ export class CoreComponent implements OnInit {
         console.error(error);
         alert(error.message);
         });
-     }
+    }
 
     clearNewStudent() {
         this.newStudent = new WkQuiz();
+    }
+
+    deleteStudent(studentId) {
+        this.service.deleteStudent(studentId).
+        then(rowsDeleted => {
+          if (rowsDeleted > 0) {
+            const index = this.students.findIndex(student => student.id === studentId);
+            this.students.splice(index, 1);
+            alert('Successfully deleted');
+          }
+        }).catch(error => {
+          console.error(error);
+          alert(error.message);
+        });
+    }
+
+    getStudent(studentId) {
+        this.service.getStudent(studentId).
+        then(students => {
+          if (students.length > 0) {
+            this.oldStudent = students[0];
+          }
+        }).catch(error => {
+          console.error(error);
+          alert(error.message);
+        });
+    }
+  
+    updateStudent() {
+        const updatedValue: Quiz = {
+            name: this.oldStudent.name,
+            gender: this.oldStudent.gender,
+            country: this.oldStudent.country,
+            city: this.oldStudent.city
+        };
+        this.service.updateStudent(this.oldStudent.id, updatedValue).
+        then(rowsUpdated => {
+          if (rowsUpdated > 0) {
+            const index = this.students.findIndex(student => student.id === this.oldStudent.id);
+            this.students[index] = this.oldStudent;
+            this.clearOldStudent();
+            alert('Successfully updated');
+          }
+        }).catch(error => {
+          console.error(error);
+          alert(error.message);
+        });
+    }
+
+    clearOldStudent() {
+      this.oldStudent = new WkQuiz();
     }
 
 }

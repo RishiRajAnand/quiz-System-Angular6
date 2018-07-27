@@ -1,37 +1,64 @@
 <table>
-  <tr>
+    <tr>
       <th>Student Name</th>
-      <th>Gender</th>
-      <th>Country</th>
-      <th>City</th>
+      <th>gender</th>
+      <th>country</th>
+      <th>city</th>
       <th></th>
       <th></th>
-  </tr>
-  <tr>
-      <td><input type="text" [(ngModel)]="newStudent.name" /></td>
+    </tr>
+    <tr>
       <td>
-          <select [(ngModel)]="newStudent.gender">
-      <option value="m">Male</option>
-      <option value="f">FeMale</option>
-    </select>
-          <td><input type="text" [(ngModel)]="newStudent.country" /></td>
-          <td><input type="text" [(ngModel)]="newStudent.city" /></td>
-          <td>
-              <button (click)="addStudent()">Add</button>
-          </td>
-          <td>
-              <button (click)="clearNewStudent()">Cancel</button>
-          </td>
-  </tr>
-  <tr *ngFor="let student of students" [attr.data-id]="student.id">
-      <td>{{student.name}}
+        <input type="text" [(ngModel)]="newStudent.name" />
       </td>
-      <td>{{student.gender=='m'?'Male':'Female'}}
+      <td>
+        <select [(ngModel)]="newStudent.gender">
+          <option value="m">Male</option>
+          <option value="f">FeMale</option>
+        </select>
       </td>
-      <td>{{student.country}}
+      <td>
+        <input type="text" [(ngModel)]="newStudent.country" />
       </td>
-      <td>{{student.city}}</td>
-      <td></td>
-      <td></td>
-  </tr>
-</table>
+      <td>
+        <input type="text" [(ngModel)]="newStudent.city" />
+      </td>
+      <td>
+        <button (click)="addStudent()">Add</button>
+      </td>
+      <td>
+        <button (click)="clearNewStudent()">Cancel</button>
+      </td>
+    </tr>
+    <tr *ngFor="let student of students" [attr.data-id]="student.id">
+      <td>
+        <input type="text" *ngIf="student.editing" [(ngModel)]="oldStudent.name" />
+        <span *ngIf="!student.editing">
+          {{student.name}}
+        </span>
+      </td>
+      <td>
+        <select *ngIf="student.editing" [(ngModel)]="oldStudent.gender">
+          <option value="m">Male</option>
+          <option value="f">FeMale</option>
+        </select>
+        <span *ngIf="!student.editing">{{student.gender=='m'?'Male':'Female'}}</span>
+      </td>
+      <td>
+        <input type="text" *ngIf="student.editing" [(ngModel)]="oldStudent.country" />
+        <span *ngIf="!student.editing">{{student.country}}</span>
+      </td>
+      <td>
+        <input type="text" *ngIf="student.editing" [(ngModel)]="oldStudent.city" />
+        <span *ngIf="!student.editing">{{student.city}}</span>
+      </td>
+      <td>
+        <button *ngIf="student.editing" (click)="updateStudent();student.editing=false">Update</button>
+        <button *ngIf="!student.editing" (click)="student.editing=true;getStudent(student.id);">Edit</button>
+      </td>
+      <td>
+        <button *ngIf="student.editing" (click)="student.editing=false">Cancel</button>
+        <button *ngIf="!student.editing" (click)="deleteStudent(student.id)">Delete</button>
+      </td>
+    </tr>
+  </table>

@@ -26,6 +26,34 @@ export class IndexedDBService extends BaseService {
           values: [student]
         });
     }
+
+    deleteStudent(studentId: number) {
+        return this.connection.remove({
+          from: 'Students',
+          where: {
+            id: studentId
+          }
+        });
+    }
+
+    updateStudent(studentId: number, updateValue: Quiz) {
+        return this.connection.update({
+          in: 'Students',
+          where: {
+            id: studentId
+          },
+          set: updateValue
+        });
+    }
+    
+    getStudent(studentId: number) {
+        return this.connection.select({
+          from: 'Students',
+          where: {
+            id: studentId
+          }
+        });
+    }
 }
 
 
