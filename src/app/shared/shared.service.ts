@@ -22,7 +22,6 @@ export class SharedService {
         fetch('./assets/536_1.zip')
             .then(function(response) {
                 if (response.status === 200 || response.status === 0) {
-                    console.log('zip inside>>>>>', response.status);
                     return Promise.resolve(response.blob());
                 } else {
                     return Promise.reject(new Error(response.statusText));
@@ -45,14 +44,14 @@ export class SharedService {
                                 padding: CryptoJS.pad.Pkcs7
                             });
                             console.info('Given text :' + original_text);
-                            let jsonData = decrypted.toString(CryptoJS.enc.Utf8)
+                            let jsonData = decrypted.toString(CryptoJS.enc.Utf8);
                             console.log('Decrypted text: '+ jsonData);
                             jsonData = JSON.parse(jsonData);
                             console.log(jsonData);
                         }, false);
                         textReader.readAsText(content);
                     }
-                }, false);
+                });  
             })
             .then(function success(text) { }, function error(e) {
                 console.log(e);

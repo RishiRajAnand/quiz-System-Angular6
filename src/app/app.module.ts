@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule, routingComponents } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './core/footer/footer.component';
- import { SharedService } from './shared/shared.service';
+import { SharedService } from './shared/shared.service';
 import { CoreComponent } from './core/core.component';
 import { HeaderComponent } from './core/header/header.component';
 
