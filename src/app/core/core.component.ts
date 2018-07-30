@@ -1,3 +1,4 @@
+import { SharedService } from './../shared/shared.service';
 import { Component, OnInit } from '@angular/core';
 import { IndexedDBService } from '../shared/indexed-db.service';
 import { WkQuiz , Quiz } from '../model/wk-quiz';
@@ -9,21 +10,27 @@ import { WkQuiz , Quiz } from '../model/wk-quiz';
     providers: [IndexedDBService]
 })
 export class CoreComponent implements OnInit {
-
+    quizJsonData: any;
     private service: IndexedDBService;
     students: any  = [];
     newStudent: any = new WkQuiz();
     oldStudent: any = new WkQuiz();
 
 
-    constructor(service: IndexedDBService) {
+    constructor(service: IndexedDBService, private sharedService: SharedService) {
         this.service = service;
+        this.getJsonFile();
     }
 
-    ngOnInit() { 
+    ngOnInit() {
       this.getStudents();
     }
-
+    getJsonFile() {
+      this.sharedService.getJSON().subscribe(data => {
+        this.quizJsonData = data['items'];
+        console.log('data>>>', this.quizJsonData);
+    });
+    }
     getStudents() {
         this.service.getStudents().
         then(students => {

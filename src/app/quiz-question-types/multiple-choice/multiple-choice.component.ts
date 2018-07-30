@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-multiple-choice',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./multiple-choice.component.css']
 })
 export class MultipleChoiceComponent implements OnInit {
-
+@Input() dataMessage: any;
   constructor() { }
 
   ngOnInit() {

@@ -12,12 +12,14 @@ import { DragAndDropComponent } from '../quiz-question-types/drag-and-drop/drag-
 import { HotSpotComponent } from '../quiz-question-types/hot-spot/hot-spot.component';
 import { FigureLabelingExerciseComponent } from '../quiz-question-types/figure-labeling-exercise/figure-labeling-exercise.component';
 import { InlineChoiceComponent } from '../quiz-question-types/inline-choice/inline-choice.component';
+import { CoreComponent } from '../core/core.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/',
+    redirectTo: '/QuizCore',
     pathMatch: 'full'
   },
+  {path: 'QuizCore', component: CoreComponent},
   {path: 'ClinicalSymptoms', component: ClinicalSymptomsComponent},
   {path: 'FillInTheBlanks', component: FillInTheBlanksComponent},
   {path: 'TrueFalse', component: TrueFalseComponent},
@@ -41,4 +43,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponents =  [ TrueFalseComponent, ClinicalSymptomsComponent,  FillInTheBlanksComponent,
   MultipleChoiceComponent, MultipleResponseComponent, MedicalCaseComponent, GraphicOptionsComponent,
-  DragAndDropComponent, HotSpotComponent, FigureLabelingExerciseComponent, InlineChoiceComponent];
+  DragAndDropComponent, HotSpotComponent, FigureLabelingExerciseComponent, InlineChoiceComponent,
+  CoreComponent];
