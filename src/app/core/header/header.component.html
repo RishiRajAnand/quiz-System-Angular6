@@ -1,3 +1,55 @@
-<p>
-  header works!
-</p>
+<ul class="list-inline">
+    <li class="list-inline-item"><h6>Time Allotted Per Question</h6>
+      <span class="badge badge-primary">{{quizData.questionTime}} Seconds</span></li>
+    <li class="list-inline-item"><h6>Question Time Spent</h6>
+      <span class="badge badge-primary">{{sharedService.displayTimeElapsed()}}</span></li>
+    <li class="list-inline-item"><h6>Correct</h6>
+      <span class="badge badge-primary">27 Seconds</span></li>
+    <li class="list-inline-item"><h6>Incorrect</h6>
+      <span class="badge badge-primary">27 Seconds</span></li>
+    <li class="list-inline-item"> <h6>Unanswered</h6>
+      <span class="badge badge-primary">27 Seconds</span></li>
+    <li class="list-inline-item"><h6>Time Allotted for Quiz</h6>
+      <span class="badge badge-primary">60 Seconds</span></li>
+    <li class="list-inline-item">
+      <h6>Quiz Time Spent</h6>
+      <span class="badge badge-primary">{{sharedService.displayTotalTimeElapsed()}}</span></li>
+    <li class="list-inline-item"> <h6>Question</h6>
+      <span class="badge badge-primary">{{quizData.numberOfQuestions}}</span></li>
+  </ul>
+  
+    
+<!-- <div class="row">
+  <div class="col-sm-2">
+      <h6>Time Allotted Per Question</h6>
+      <span class="badge badge-primary">{{quizData.questionTime}} Seconds</span>
+  </div>
+  <div class="col-sm-2">
+    <h6>Question Time Spent</h6>
+    <span class="badge badge-primary">{{sharedService.displayTimeElapsed()}}</span>
+</div>
+<div class="col-sm-1">
+    <h6>Correct</h6>
+    <span class="badge badge-primary">0</span>
+</div>
+<div class="col-sm-1">
+  <h6>Incorrect</h6>
+  <span class="badge badge-primary">0</span>
+</div>
+<div class="col-sm-1">
+<h6>Unanswered</h6>
+<span class="badge badge-primary">0</span>
+</div>
+<div class="col-sm-2">
+<h6>Time for Quiz</h6>
+<span class="badge badge-primary">60 Seconds</span>
+</div>
+<div class="col-sm-2">
+<h6>Quiz Time Spent</h6>
+<span class="badge badge-primary">{{sharedService.displayTotalTimeElapsed()}}</span>
+</div>
+<div class="col-sm-1">
+<h6>Question</h6>
+<span class="badge badge-primary">{{quizData.numberOfQuestions}}</span>
+</div>
+</div> -->

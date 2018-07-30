@@ -1,20 +1,19 @@
-<div class="container">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                     <router-outlet></router-outlet>
-                  </p>
-                </div>
-                <div class="row form-group">
-                        <div class="col-sm-6"></div>
-                        <div class="col-sm-3"> 
-                            <button type="button" class="btn btn-sm btn-block btn-primary" >Prev</button>
-                        </div>
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-sm btn-block btn-primary" routerLink="/TrueFalse">Next</button>
-                        </div>
-                    </div>
-    <div class="row form-group">
-    </div>
-    
+<div class="card">
+  
+<div id="secondTenthsExample">
+    <div class="values"></div>
 </div>
+    <div class="card-header">
+    </div>
+    <div class="card-body" style="background-color: #ededed">
+      <h5 class="card-title">
+        <app-header></app-header>
+      </h5>
+      <p class="card-text">
+          <router-outlet></router-outlet>
+      </p>
+      <div>
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
