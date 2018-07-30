@@ -10,7 +10,7 @@ import { WkQuiz , Quiz } from '../model/wk-quiz';
 })
 export class CoreComponent implements OnInit {
 
-    private service: IndexedDBService;       
+    private service: IndexedDBService;
     students: any  = [];
     newStudent: any = new WkQuiz();
     oldStudent: any = new WkQuiz();
