@@ -2,10 +2,11 @@
 <ul class="collection answer">
   <ng-container *ngFor="let option of dataMessage[0].choiceInteraction.simpleChoices;let i = index">
     <div *ngIf="option != null">
-     <input type="checkbox" [value]="option.choiceId"> {{option.label}}
+     <input type="checkbox" [(ngModel)]="userInput" (change)="clearUserAction($event)" id="userActions" [value]="option.choiceId"> {{option.label}}
     </div>
   </ng-container>
 </ul>
+<ng-container *ngIf="message == true">
 <div class="alert alert-danger">
   <strong>Your Response:</strong>
 </div>
@@ -24,3 +25,4 @@
     <span *ngIf="Remediation.linkTypeId != 1"> {{Remediation.linkText1}}</span>
   </div>
 </div>
+</ng-container>

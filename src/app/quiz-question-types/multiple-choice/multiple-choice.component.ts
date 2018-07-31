@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SharedService } from '../../shared/shared.service';
 
 @Component({
   selector: 'app-multiple-choice',
@@ -7,9 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MultipleChoiceComponent implements OnInit {
 @Input() dataMessage: any;
-  constructor() { }
+message: boolean;
+clearEntries: boolean;
+userInput: any = [];
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
+    this.sharedService.currentState.subscribe(message => this.message = message);
+    this.sharedService.currentState.subscribe(clearEntries => this.clearEntries = clearEntries);
   }
-
+clearUserAction(e) {
+ console.log('event', e.srcElement.value);
+}
 }

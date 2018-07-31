@@ -11,6 +11,6 @@ import { IndexedDBService } from './shared/indexed-db.service';
 })
 export class AppComponent {
   constructor(private sharedService: SharedService) {
-  
   }
+  
 }

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
 import * as JSZip from 'jszip';
@@ -16,12 +16,28 @@ qns: any = [];
 timer: any;
 seconds: any;
 qnProgress: any;
+private hideShow = new BehaviorSubject(false);
+currentState = this.hideShow.asObservable();
+private clearResponse = new BehaviorSubject(true);
+currentresponse = this.clearResponse.asObservable();
   constructor(private httpClient: HttpClient) {
    }
 getJSON() {
   return this.httpClient.get('./assets/Questions.json').map((data) => {
     return data;
   });
+}
+showAnswer(state: boolean) {
+  this.hideShow.next(true);
+}
+hideAnswer(state: boolean) {
+  this.hideShow.next(false);
+}
+clearResponseAnswer(state: boolean) {
+  this.clearResponse.next(true);
+}
+clearResponseAnswerFalse(state: boolean) {
+  this.clearResponse.next(false);
 }
 getUserToken() {
   const currentUserDetails = JSON.parse(localStorage.getItem('currentUser'));
