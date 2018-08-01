@@ -9,14 +9,14 @@ function createWindow () {
   win = new BrowserWindow({
       width: 600,
       height: 600,
-      backgroundColor: '#312450',
-      webPreferences: {
-        webSecurity: false
-      }
+      backgroundColor: '#312450'//,
+      // webPreferences: {
+      //   webSecurity: false
+      // }
   })
 
   //Hide the Menu Bar
-  win.setMenu(null);
+  //win.setMenu(null);
 
 
   win.loadURL(`file://${__dirname}/dist/index.html`)

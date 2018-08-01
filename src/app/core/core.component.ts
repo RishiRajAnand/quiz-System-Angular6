@@ -12,16 +12,19 @@ export class CoreComponent implements OnInit {
 
     private service: IndexedDBService;       
     students: any  = [];
+    cmn_asset_type : any =[];
     newStudent: any = new WkQuiz();
     oldStudent: any = new WkQuiz();
 
 
     constructor(service: IndexedDBService) {
         this.service = service;
+        //this.insertAssetType();
     }
 
     ngOnInit() { 
-      this.getStudents();
+        this.getStudents();     
+        //this.service.terminateDB();  
     }
 
     getStudents() {
@@ -86,7 +89,7 @@ export class CoreComponent implements OnInit {
             country: this.oldStudent.country,
             city: this.oldStudent.city
         };
-        this.service.updateStudent(this.oldStudent.id, updatedValue).
+        this.service.updateData(this.oldStudent.id, updatedValue).
         then(rowsUpdated => {
           if (rowsUpdated > 0) {
             const index = this.students.findIndex(student => student.id === this.oldStudent.id);
@@ -104,4 +107,18 @@ export class CoreComponent implements OnInit {
       this.oldStudent = new WkQuiz();
     }
 
+   
+    // insertAssetType() {
+    //   this.service.insertAssetType().
+    //   then((insertAssetType: Quiz[]) => {
+    //   if (insertAssetType.length > 0) {
+    //     this.cmn_asset_type.push(insertAssetType[0]);
+    //    // this.clearNewStudent();
+    //     alert('Successfully inserted');
+    //   }
+    //   }).catch(error => {
+    //   console.error(error);
+    //   alert(error.message);
+    //   });
+    // }
 }

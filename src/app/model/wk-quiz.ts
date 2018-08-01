@@ -12,7 +12,7 @@ export class Quiz {
 
 
 export class WkQuiz implements Quiz {
-    id = 0;
+    id = 1;
     name = '';
     gender = 'm';
     country = '';

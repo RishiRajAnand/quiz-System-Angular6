@@ -75,7 +75,7 @@ var CoreComponent = /** @class */ (function () {
             alert(error.message);
         });
     };
-    CoreComponent.prototype.updateStudent = function () {
+    CoreComponent.prototype.updateData = function () {
         var _this = this;
         var updatedValue = {
             name: this.oldStudent.name,
@@ -83,7 +83,7 @@ var CoreComponent = /** @class */ (function () {
             country: this.oldStudent.country,
             city: this.oldStudent.city
         };
-        this.service.updateStudent(this.oldStudent.id, updatedValue).
+        this.service.updateData(this.oldStudent.id, updatedValue).
             then(function (rowsUpdated) {
             if (rowsUpdated > 0) {
                 var index = _this.students.findIndex(function (student) { return student.id === _this.oldStudent.id; });

@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { IndexedDbService } from './indexed-db.service';
+import { IndexedDBService } from './indexed-db.service';
 
-describe('IndexedDbService', () => {
+describe('IndexedDBService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [IndexedDbService]
+      providers: [IndexedDBService]
     });
   });
 
-  it('should be created', inject([IndexedDbService], (service: IndexedDbService) => {
+  it('should be created', inject([IndexedDBService], (service: IndexedDBService) => {
     expect(service).toBeTruthy();
   }));
 });
