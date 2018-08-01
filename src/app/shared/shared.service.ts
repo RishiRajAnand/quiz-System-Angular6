@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
 import * as JSZip from 'jszip';
@@ -22,12 +22,33 @@ export class SharedService {
     jsonData: any;
     title = 'app';
 
-    constructor( private httpClient : HttpClient  ) { }
+    private hideShow = new BehaviorSubject(false);
+    currentState = this.hideShow.asObservable();
+    private clearResponse = new BehaviorSubject(true);
+    currentresponse = this.clearResponse.asObservable();
 
+    constructor( private httpClient : HttpClient  ) { }
+    
     getJSON() {
         return this.httpClient.get('./assets/Questions.json').map((data) => {
           return data;
         });
+    }
+
+    showAnswer(state: boolean) {
+        this.hideShow.next(true);
+    }
+
+    hideAnswer(state: boolean) {
+        this.hideShow.next(false);
+    }
+
+    clearResponseAnswer(state: boolean) {
+        this.clearResponse.next(true);
+    }
+
+    clearResponseAnswerFalse(state: boolean) {
+        this.clearResponse.next(false);
     }
     
     getUserToken() {
@@ -51,7 +72,7 @@ export class SharedService {
           return data;
         });
     }
-    
+
     quizInformationForUser(quizId, quizVersion, instanceId, clientUserId, headers) {
         return this.httpClient.get('http://quizzing-qa.hlrpbooks.com/api/tests/' + quizId + '/' +
         quizVersion + '/instances/' + instanceId + '?clientUserId=' + clientUserId + '&summary=false', {
@@ -69,7 +90,7 @@ export class SharedService {
           return data;
         });
     }
-    
+
     displayTotalTimeElapsed() {
         return Math.floor(this.seconds / 3600) + ':' + Math.floor(this.seconds / 60) + ':' + Math.floor(this.seconds % 60);
     }

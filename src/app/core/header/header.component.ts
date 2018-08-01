@@ -126,9 +126,16 @@ export class HeaderComponent implements OnInit {
    * Function to start question timer 
    */
   startTimer() {
-    this.sharedService.timer = setInterval(() => {
-    this.sharedService.seconds++;
-    }, 1000);
+      this.sharedService.timer = setInterval(() => {
+      this.sharedService.seconds++;
+      }, 1000);
+  }
+
+  displayQuizQnsTimeElapsed() {
+      return Math.floor(0 / 3600) + ':' + Math.floor(0 / 60) + ':' + Math.floor(15 % 60);
+  }
+  displayGivenQuizTimeElapsed() {
+      return Math.floor(0 / 3600) + ':' + Math.floor(2 / 60) + ':' + Math.floor(0 % 60);
   }
 
 
