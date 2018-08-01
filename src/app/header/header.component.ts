@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from '../../shared/shared.service';
-import { IndexedDBService } from '../../shared/indexed-db.service';
-import { WkQuiz , Quiz } from '../../model/wk-quiz';
+import { SharedService } from '../shared/shared.service';
+import { IndexedDBService } from '../shared/indexed-db.service';
+import { WkQuiz , Quiz } from '../model/wk-quiz';
+import { CoreService } from '../core/core-service/core.service';
 //import { SnakeCase } from 'node_modules/lodash';
 var SnakeCase = require('lodash.snakecase');
 
@@ -13,7 +14,7 @@ var SnakeCase = require('lodash.snakecase');
 })
 export class HeaderComponent implements OnInit {
 
-    private service: IndexedDBService;     
+    private service: IndexedDBService;
 
     token: any;
     quizData: any;
@@ -23,20 +24,20 @@ export class HeaderComponent implements OnInit {
     page = '536';
     perPage = '536';
     clientUserId = '536';
-    cmn_asset_type : any = [];
+    cmn_asset_type: any = [];
 
 
-    constructor(private sharedService: SharedService,service: IndexedDBService) {
+    constructor(private sharedService: SharedService, private coreService: CoreService, service: IndexedDBService) {
         this.service = service;
-        this.authToken(); 
+        this.authToken();
     }
 
   ngOnInit() {
-      this.sharedService.seconds = 0;
-      this.sharedService.qnProgress = 0;
+      this.coreService.seconds = 0;
+      this.coreService.qnProgress = 0;
       this.startTimer();
   }
-
+// Function to get autorized token
   authToken() {
       const body = {
         'clientCode': 'silverchair001',
@@ -46,8 +47,7 @@ export class HeaderComponent implements OnInit {
         'lastName': 'N',
         'clientUserId': '9789'
       }
-    
-    this.sharedService.getToken(body)
+    this.coreService.getToken(body)
       .subscribe(
         (response) => {
           console.log('Response = > ', response);
@@ -64,8 +64,7 @@ export class HeaderComponent implements OnInit {
           this.getQuiz(headers);
           //var zipfile = this.getZipDownload(this.quizId, this.quizVersion, this.instanceId, this.page, this.perPage, this.clientUserId, headers);
           //console.log(zipfile);
-         // this.sharedService.unzipJson();
-          
+         // this.coreService.unzipJson();
         },
         (error) => {
           console.log(error);
@@ -78,8 +77,7 @@ export class HeaderComponent implements OnInit {
    * @param headers
    */
   getQuiz(headers) {
-    
-    this.sharedService.getQuizForUser(536, 9789, headers)
+    this.coreService.getQuizForUser(536, 9789, headers)
     .subscribe(
       (response) => {
         console.log('quizdata>>>>', response);
@@ -107,7 +105,7 @@ export class HeaderComponent implements OnInit {
    */
   getZipDownload(quizId, quizVersion, instanceId, page, perPage, clientUserId, headers) {
     
-    return this.sharedService.quizZipDownload(quizId, quizVersion, instanceId, page, perPage, clientUserId, headers)
+    return this.coreService.quizZipDownload(quizId, quizVersion, instanceId, page, perPage, clientUserId, headers)
     .subscribe(
       (response) => {
         this.quizData = response;
@@ -126,8 +124,8 @@ export class HeaderComponent implements OnInit {
    * Function to start question timer 
    */
   startTimer() {
-      this.sharedService.timer = setInterval(() => {
-      this.sharedService.seconds++;
+      this.coreService.timer = setInterval(() => {
+      this.coreService.seconds++;
       }, 1000);
   }
 

@@ -1,28 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../shared/shared.service';
+import { CoreService } from '../../core/core-service/core.service';
 @Component({
   selector: 'app-fill-in-the-blanks',
   templateUrl: './fill-in-the-blanks.component.html',
   styleUrls: ['./fill-in-the-blanks.component.css']
 })
 export class FillInTheBlanksComponent implements OnInit {
-  constructor(private sharedService: SharedService) {
-    this.getJsonFile();
+  constructor(private sharedService: SharedService, private coreService: CoreService) {
    }
 
   ngOnInit() {
-    this.sharedService.seconds = 0;
-    this.sharedService.qnProgress = 0;
+    this.coreService.seconds = 0;
+    this.coreService.qnProgress = 0;
   }
-getJsonFile() {
-  this.sharedService.getJSON().subscribe(data => {
-    this.sharedService.qns = data['items'];
-    console.log('data>>>', this.sharedService.qns);
-});
-}
 startTimer() {
-  this.sharedService.timer = setInterval(() => {
-  this.sharedService.seconds++;
+  this.coreService.timer = setInterval(() => {
+  this.coreService.seconds++;
   }, 1000);
 }
 }

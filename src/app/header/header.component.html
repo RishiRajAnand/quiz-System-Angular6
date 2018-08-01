@@ -1,0 +1,23 @@
+<ul class="list-inline">
+    <li class="list-inline-item"><h6>Time Allotted Per Question</h6>
+      <span class="badge badge-primary">{{quizData.questionTime}} Seconds</span></li>
+    <li class="list-inline-item"><h6>Question Time Spent</h6>
+      <span class="badge badge-primary" [ngClass]="{'badge badge-danger':(coreService.displayTimeElapsed() > displayQuizQnsTimeElapsed())}">
+        {{coreService.displayTimeElapsed()}}</span></li>
+    <li class="list-inline-item"><h6>Correct</h6>
+      <span class="badge badge-primary">27 Seconds</span></li>
+    <li class="list-inline-item"><h6>Incorrect</h6>
+      <span class="badge badge-primary">27 Seconds</span></li>
+    <li class="list-inline-item"> <h6>Unanswered</h6>
+      <span class="badge badge-primary">27 Seconds</span></li>
+    <li class="list-inline-item"><h6>Time Allotted for Quiz</h6>
+      <span class="badge badge-primary">{{quizData.quizTime}}</span></li>
+    <li class="list-inline-item">
+      <h6>Quiz Time Spent</h6>
+      <span class="badge badge-primary" [ngClass]="{'badge badge-danger':(coreService.displayTotalTimeElapsed() > displayGivenQuizTimeElapsed())}">
+        {{coreService.displayTotalTimeElapsed()}}</span></li>
+    <li class="list-inline-item"> <h6>Question</h6>
+      <span class="badge badge-primary">{{quizData.numberOfQuestions}}</span></li>
+  </ul>
+  
+ 
