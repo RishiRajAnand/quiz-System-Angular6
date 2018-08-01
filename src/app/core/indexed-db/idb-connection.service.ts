@@ -6,7 +6,7 @@ console.log("worker path ", workerPath);
 @Injectable({
   providedIn: 'root'
 })
-export class IdbService {
+export class IdbConnectionService {
 
   //constructor() { }
 

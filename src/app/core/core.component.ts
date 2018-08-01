@@ -1,6 +1,6 @@
 import { SharedService } from './../shared/shared.service';
 import { Component, OnInit } from '@angular/core';
-import { IndexedDBService } from '../shared/indexed-db.service';
+import { IndexedDBService } from './indexed-db/idb-model.service';
 import { WkQuiz , Quiz } from '../model/wk-quiz';
 
 @Component({

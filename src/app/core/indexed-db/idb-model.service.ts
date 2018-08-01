@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from './base.service';
-import { WkQuiz , Quiz } from '../model/wk-quiz';
+import { DBSchemaService } from './idb-schema.service';
+import { WkQuiz , Quiz } from '../../model/wk-quiz';
 var SnakeCase = require('lodash.snakecase');
 
 
@@ -8,7 +8,7 @@ var SnakeCase = require('lodash.snakecase');
     providedIn: 'root'
 })
 
-export class IndexedDBService extends BaseService {
+export class IndexedDBService extends DBSchemaService {
 
     constructor() {
         super();
@@ -22,8 +22,11 @@ export class IndexedDBService extends BaseService {
     
     insertData(tblName,Value){
         var data = JSON.parse(JSON.stringify(Value));
-        data = SnakeCase(data);
-       
+       // data = SnakeCase(data);
+      //   data.forEach(element => {
+      //    alert(element.key);
+         
+      //  });
         return this.connection.insert({
           into: tblName,
           values: [Value],

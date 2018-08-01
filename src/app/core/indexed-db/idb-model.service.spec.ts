@@ -1,6 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-
-import { IndexedDBService } from './indexed-db.service';
+import { IndexedDBService } from './idb-model.service';
 
 describe('IndexedDBService', () => {
   beforeEach(() => {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { IdbService } from './idb.service';
+import { IdbConnectionService } from './idb-connection.service';
 import { IDataBase, DATA_TYPE, ITable } from 'jsstore';
 
-export class BaseService {
+export class DBSchemaService {
 
     dbname = 'quizplatform';
 
@@ -17,7 +17,7 @@ export class BaseService {
      * DB Connection
      */
     get connection() {
-        return IdbService.idbCon;
+        return IdbConnectionService.idbCon;
     }
 
     /**

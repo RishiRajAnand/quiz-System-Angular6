@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { IdbService } from './idb.service';
+import { IdbConnectionService } from './idb-connection.service';
 
 describe('IdbService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [IdbService]
+      providers: [IdbConnectionService]
     });
   });
 
-  it('should be created', inject([IdbService], (service: IdbService) => {
+  it('should be created', inject([IdbConnectionService], (service: IdbConnectionService) => {
     expect(service).toBeTruthy();
   }));
 });

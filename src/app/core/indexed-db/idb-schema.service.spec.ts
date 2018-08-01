@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { BaseService } from './base.service';
+import { DBSchemaService } from './idb-schema.service';
 
 describe('BaseService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BaseService]
+      providers: [DBSchemaService]
     });
   });
 
-  it('should be created', inject([BaseService], (service: BaseService) => {
+  it('should be created', inject([DBSchemaService], (service: DBSchemaService) => {
     expect(service).toBeTruthy();
   }));
 });

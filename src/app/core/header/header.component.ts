@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../shared/shared.service';
-import { IndexedDBService } from '../../shared/indexed-db.service';
+import { IndexedDBService } from '../../core/indexed-db/idb-model.service';
 import { WkQuiz , Quiz } from '../../model/wk-quiz';
 //import { SnakeCase } from 'node_modules/lodash';
 var SnakeCase = require('lodash.snakecase');
