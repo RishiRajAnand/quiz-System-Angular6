@@ -2,7 +2,7 @@
 <ul class="collection answer">
   <ng-container *ngFor="let option of dataMessage[0].choiceInteraction.simpleChoices;let i = index">
     <div *ngIf="option != null">
-     <input type="checkbox" [(ngModel)]="userInput" (change)="clearUserAction($event)" id="userActions" [value]="option.choiceId"> {{option.label}}
+     <input type="checkbox"  (change)="clearUserAction($event)" id="userActions" [value]="option.choiceId"> {{option.label}}
     </div>
   </ng-container>
 </ul>
@@ -21,7 +21,7 @@
 <p><strong>Rationale:</strong> <span>{{dataMessage[0].modelFeedback[0].feedbackText}}</span></p>
  <div><strong>Remediation:</strong>  
   <div *ngFor="let Remediation of dataMessage[0].remediationLinks; let k = index">
-    <a *ngIf="Remediation.linkTypeId == 1" href="{{Remediation.linkText2}}">{{Remediation.linkText1}}</a>
+    <a *ngIf="Remediation.linkTypeId == 1" target="_blank" href="{{Remediation.linkText2}}">{{Remediation.linkText1}}</a>
     <span *ngIf="Remediation.linkTypeId != 1"> {{Remediation.linkText1}}</span>
   </div>
 </div>

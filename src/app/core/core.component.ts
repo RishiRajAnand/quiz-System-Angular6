@@ -1,7 +1,8 @@
-import { SharedService } from './../shared/shared.service';
+import { SharedService } from '../shared/shared.service';
 import { Component, OnInit } from '@angular/core';
 import { IndexedDBService } from './indexed-db/idb-model.service';
 import { WkQuiz , Quiz } from '../model/wk-quiz';
+import { CoreService } from './core-service/core.service';
 
 @Component({
     selector: 'app-core',
@@ -13,12 +14,12 @@ export class CoreComponent implements OnInit {
     quizJsonData: any;
     private service: IndexedDBService;
     students: any  = [];
-    cmn_asset_type : any =[];
+    cmn_asset_type: any = [];
     newStudent: any = new WkQuiz();
     oldStudent: any = new WkQuiz();
 
 
-    constructor(service: IndexedDBService, private sharedService: SharedService) {
+    constructor(service: IndexedDBService, private sharedService: SharedService, private coreService: CoreService) {
         this.service = service;
         //this.insertAssetType();
     }
@@ -30,7 +31,7 @@ export class CoreComponent implements OnInit {
     }
 
     getJsonFile() {
-      this.sharedService.getJSON().subscribe(data => {
+      this.coreService.getJSON().subscribe(data => {
         this.quizJsonData = data['items'];
         console.log('data>>>', this.quizJsonData);
     });

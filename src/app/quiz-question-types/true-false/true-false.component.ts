@@ -8,17 +8,8 @@ import { SharedService } from '../../shared/shared.service';
 export class TrueFalseComponent implements OnInit {
 
   constructor(private sharedService: SharedService) {
-    this.getJsonFile();
   }
 
   ngOnInit() {
-    this.sharedService.seconds = 0;
-    this.sharedService.qnProgress = 0;
-  }
-  getJsonFile() {
-    this.sharedService.getJSON().subscribe(data => {
-      this.sharedService.qns = data['items'];
-      console.log('data>>>', this.sharedService.qns);
-  });
   }
 }

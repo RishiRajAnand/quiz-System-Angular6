@@ -17,6 +17,7 @@ userInput: any = [];
     this.sharedService.currentState.subscribe(message => this.message = message);
     this.sharedService.currentState.subscribe(clearEntries => this.clearEntries = clearEntries);
   }
+  // Function for clearing user response
 clearUserAction(e) {
  console.log('event', e.srcElement.value);
 }

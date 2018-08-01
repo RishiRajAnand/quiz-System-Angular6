@@ -1,4 +1,4 @@
-import { SharedService } from './../../shared/shared.service';
+import { SharedService } from '../shared/shared.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
