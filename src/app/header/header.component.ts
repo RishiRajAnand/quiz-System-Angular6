@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
   cmn_asset_type: any = [];
 
 
-  constructor(private sharedService: SharedService, private coreService: CoreService, service: IndexedDBService) {
+  constructor(public sharedService: SharedService, public coreService: CoreService, service: IndexedDBService) {
     this.service = service;
     this.authToken();
   }

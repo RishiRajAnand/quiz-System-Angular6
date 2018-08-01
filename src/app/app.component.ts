@@ -9,12 +9,12 @@ import { IndexedDBService } from './core/indexed-db/idb-model.service';
     styleUrls: ['./app.component.css'],
     providers: [IndexedDBService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     title = 'app';
-    constructor( private appService : SharedService, private indexedDB : IndexedDBService){}
+    constructor( private appService: SharedService, private indexedDB : IndexedDBService){}
 
-    ngOnInit(){
+    ngOnInit() {
               
     }
 }
