@@ -1,6 +1,11 @@
-
-    <app-multiple-choice [dataMessage]="quizJsonData"></app-multiple-choice>
-
+<div class="card"> 
+  <div class="card-header"><app-header #h [headerData]="headerData" [configure]="headerConfiguration"></app-header></div>
+  <div class="card-body"><router-outlet></router-outlet></div> 
+  <div class="card-footer"><app-footer [totalQuestions]="headerData.length" (questionChanged)='questionChanged($event)'></app-footer></div>
+</div>
+ 
+ 
+ <!-- <app-multiple-choice [dataMessage]="quizJsonData"></app-multiple-choice> -->
 <!-- <table>
     <tr>
       <th>Student Name</th>

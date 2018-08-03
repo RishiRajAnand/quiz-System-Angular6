@@ -7,10 +7,10 @@ import { SharedService } from '../../shared/shared.service';
   styleUrls: ['./multiple-choice.component.css']
 })
 export class MultipleChoiceComponent implements OnInit {
-@Input() dataMessage: any;
-message: boolean;
-clearEntries: boolean;
-userInput: any = [];
+  @Input() dataMessage: any;
+  message: boolean;
+  clearEntries: boolean;
+  userInput: any = [];
   constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
@@ -18,7 +18,7 @@ userInput: any = [];
     this.sharedService.currentState.subscribe(clearEntries => this.clearEntries = clearEntries);
   }
   // Function for clearing user response
-clearUserAction(e) {
- console.log('event', e.srcElement.value);
-}
+  clearUserAction(e) {
+    console.log('event', e.srcElement.value);
+  }
 }

@@ -13,24 +13,26 @@ import { HotSpotComponent } from '../quiz-question-types/hot-spot/hot-spot.compo
 import { FigureLabelingExerciseComponent } from '../quiz-question-types/figure-labeling-exercise/figure-labeling-exercise.component';
 import { InlineChoiceComponent } from '../quiz-question-types/inline-choice/inline-choice.component';
 import { CoreComponent } from '../core/core.component';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '/QuizCore',
-    pathMatch: 'full'
-  },
-  {path: 'QuizCore', component: CoreComponent},
-  {path: 'ClinicalSymptoms', component: ClinicalSymptomsComponent},
-  {path: 'FillInTheBlanks', component: FillInTheBlanksComponent},
-  {path: 'TrueFalse', component: TrueFalseComponent},
-  {path: 'MultipleChoice', component: MultipleChoiceComponent},
-  {path: 'MultipleResponse', component: MultipleResponseComponent},
-  {path: 'MedicalCase', component: MedicalCaseComponent},
-  {path: 'GraphicOptions', component: GraphicOptionsComponent},
-  {path: 'DragAndDrop', component: DragAndDropComponent},
-  {path: 'HotSpot', component: HotSpotComponent},
-  {path: 'FigureLabelingExercise', component: FigureLabelingExerciseComponent},
-  {path: 'InlineChoice', component: InlineChoiceComponent},
+    path: 'QuizCore',
+    component: CoreComponent,
+    children: [
+      { path: 'ClinicalSymptoms', component: ClinicalSymptomsComponent },
+      { path: 'FillInTheBlanks', component: FillInTheBlanksComponent },
+      { path: 'TrueFalse', component: TrueFalseComponent },
+      { path: 'MultipleChoice', component: MultipleChoiceComponent },
+      { path: 'MultipleResponse', component: MultipleResponseComponent },
+      { path: 'MedicalCase', component: MedicalCaseComponent },
+      { path: 'GraphicOptions', component: GraphicOptionsComponent },
+      { path: 'DragAndDrop', component: DragAndDropComponent },
+      { path: 'HotSpot', component: HotSpotComponent },
+      { path: 'FigureLabelingExercise', component: FigureLabelingExerciseComponent },
+      { path: 'InlineChoice', component: InlineChoiceComponent },
+    ]
+  }
 ];
 @NgModule({
   imports: [
@@ -41,7 +43,7 @@ const routes: Routes = [
   declarations: []
 })
 export class AppRoutingModule { }
-export const routingComponents =  [ TrueFalseComponent, ClinicalSymptomsComponent,  FillInTheBlanksComponent,
+export const routingComponents = [TrueFalseComponent, ClinicalSymptomsComponent, FillInTheBlanksComponent,
   MultipleChoiceComponent, MultipleResponseComponent, MedicalCaseComponent, GraphicOptionsComponent,
   DragAndDropComponent, HotSpotComponent, FigureLabelingExerciseComponent, InlineChoiceComponent,
-  CoreComponent];
+  CoreComponent, HeaderComponent, FooterComponent];

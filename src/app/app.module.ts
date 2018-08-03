@@ -15,9 +15,7 @@ import { CoreService } from './core/core-service/core.service';
   declarations: [
     AppComponent,
     routingComponents,
-    FooterComponent,
     CoreComponent,
-    HeaderComponent
   ],
   imports: [
     BrowserModule,

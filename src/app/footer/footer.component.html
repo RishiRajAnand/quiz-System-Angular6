@@ -2,7 +2,7 @@
   <div class="card-body" style="background-color: #ededed">
     <div class="row">
       <div class="col-sm-2">
-          <button type="button" class="btn btn-large btn-primary" (click)="clearingResponse()">Clear Response</button>
+        <button type="button" class="btn btn-large btn-primary" (click)="clearingResponse()">Clear Response</button>
       </div>
       <div class="col-sm-2">
         <button type="button" class="btn btn-large btn-primary" (click)="showingAnswer()" *ngIf="message == false">Show Answer</button>
@@ -12,14 +12,16 @@
 
       </div>
       <div class="col-sm-1">
-        <a href="#" class="btn btn-primary btn-md active" role="button" aria-pressed="true">
+
+        <button type="button" [disabled]="(currentIndex == 0 ? true : false)" class="btn btn-large btn-primary" (click)="valueDecreased()" >
           <i class="fas fa-arrow-left"></i>
-        </a>
+        </button>
       </div>
       <div class="col-sm-1">
-        <a href="#" class="btn btn-primary btn-md active" role="button" aria-pressed="true">
+        <button type="button" class="btn btn-large  btn-primary" (click)="valueIncreased()" [disabled]="(currentIndex == (_totalQuestions - 1) ? true : false)" >
           <i class="fas fa-arrow-right"></i>
-        </a>
+        </button>
+
       </div>
     </div>
   </div>
