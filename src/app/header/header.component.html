@@ -7,7 +7,7 @@
     <h6>Question Time Spent</h6>
     <span class="badge badge-primary">
       <!-- [ngClass]="{'badge badge-danger':(coreService.displayTimeElapsed() > displayQuizQnsTimeElapsed())}" -->
-      {{questionDetails[currentIndex].questionTime}} sec</span>
+      {{(questionDetails.length > 0 ? questionDetails[currentIndex].questionTime : 0)}} sec</span>
   </li>
   <li class="list-inline-item">
     <h6>Correct</h6>

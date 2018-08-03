@@ -15,22 +15,23 @@ import { InlineChoiceComponent } from '../quiz-question-types/inline-choice/inli
 import { CoreComponent } from '../core/core.component';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { RouteResolver } from './route.resolver';
 const routes: Routes = [
   {
     path: 'QuizCore',
     component: CoreComponent,
     children: [
-      { path: 'ClinicalSymptoms', component: ClinicalSymptomsComponent },
-      { path: 'FillInTheBlanks', component: FillInTheBlanksComponent },
-      { path: 'TrueFalse', component: TrueFalseComponent },
-      { path: 'MultipleChoice', component: MultipleChoiceComponent },
-      { path: 'MultipleResponse', component: MultipleResponseComponent },
-      { path: 'MedicalCase', component: MedicalCaseComponent },
-      { path: 'GraphicOptions', component: GraphicOptionsComponent },
-      { path: 'DragAndDrop', component: DragAndDropComponent },
-      { path: 'HotSpot', component: HotSpotComponent },
-      { path: 'FigureLabelingExercise', component: FigureLabelingExerciseComponent },
-      { path: 'InlineChoice', component: InlineChoiceComponent },
+      { path: 'ClinicalSymptoms', component: ClinicalSymptomsComponent, resolve: { message: RouteResolver } },
+      { path: 'FillInTheBlanks', component: FillInTheBlanksComponent, resolve: { message: RouteResolver } },
+      { path: 'TrueFalse', component: TrueFalseComponent, resolve: { message: RouteResolver } },
+      { path: 'MultipleChoice', component: MultipleChoiceComponent, resolve: { message: RouteResolver } },
+      { path: 'MultipleResponse', component: MultipleResponseComponent, resolve: { message: RouteResolver } },
+      { path: 'MedicalCase', component: MedicalCaseComponent, resolve: { message: RouteResolver } },
+      { path: 'GraphicOptions', component: GraphicOptionsComponent, resolve: { message: RouteResolver } },
+      { path: 'DragAndDrop', component: DragAndDropComponent, resolve: { message: RouteResolver } },
+      { path: 'HotSpot', component: HotSpotComponent, resolve: { message: RouteResolver } },
+      { path: 'FigureLabelingExercise', component: FigureLabelingExerciseComponent, resolve: { message: RouteResolver } },
+      { path: 'InlineChoice', component: InlineChoiceComponent, resolve: { message: RouteResolver } },
     ]
   }
 ];
@@ -40,6 +41,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule],
+  providers: [
+    RouteResolver
+  ],
   declarations: []
 })
 export class AppRoutingModule { }

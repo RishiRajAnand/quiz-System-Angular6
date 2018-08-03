@@ -15,24 +15,12 @@ export class CoreComponent implements OnInit {
 
     @ViewChild('h') headerComponent: HeaderComponent;
     headerConfiguration: any = {
-        totalQuestions: 10,
-        totalTime: 30,
-        totalTimePerQuestion: 60
+        totalQuestions: 0,
+        totalTime: 0,
+        totalTimePerQuestion: 0
     };
 
-    headerData = [{
-        type: 'FILL',
-        data: {
-            question: 'I am fill in the blanks questions',
-            answer: 'yes you are'
-        }
-    }, {
-        type: 'MULTIPLE',
-        data: {
-            question: 'I am Multiple',
-            answer: 'ofcourse you are'
-        }
-    }];
+    headerData: Array<any> = [];
     quizJsonData: any;
     private service: IndexedDBService;
     students: any = [];
@@ -63,8 +51,24 @@ export class CoreComponent implements OnInit {
 
     ngOnInit() {
         this.getStudents();
+        this.coreService.initialiseQuestionsList().subscribe(data => {
+            if (data) {
+                this.quizJsonData = data;
+                this.headerData = this.quizJsonData.map(item => {
+                    console.log(item.labelText);
+                    return { type: item.labelText};
+                });
+                this.headerConfiguration = {
+                    totalQuestions: data.length,
+                    totalTime: 30,
+                    totalTimePerQuestion: 60
+                };
+       
+            }
+ 
+        });
         // this.service.terminateDB();
-        this.getJsonFile();
+        // this.getJsonFile();
     }
 
 
@@ -72,11 +76,12 @@ export class CoreComponent implements OnInit {
         if (this.headerData[index] !== null) {
             const routingInfo = this.giveRoutes(this.headerData[index].type);
             this.router.navigate([routingInfo.url], {
-                relativeTo: this.route
+                relativeTo: this.route,
+                queryParams: {
+                    questionIndex: index
+                }
             });
-
             this.headerComponent.changeQuestion(index);
-
         }
     }
     displayCounter(count) {
@@ -84,11 +89,19 @@ export class CoreComponent implements OnInit {
     }
     giveRoutes(type): any {
         switch (type) {
-            case 'FILL':
+            case 'FILL_IN_THE_BLANK':
                 return { url: 'FillInTheBlanks' };
-            case 'MULTIPLE':
+            case 'MULTIPLE_CHOICE':
                 return { url: 'MultipleChoice' };
-            case 'multiplechoice':
+            case 'CHOICE_MULTIPLE':
+                return { url: 'MultipleChoice' };
+            case 'DRAG_AND_DROP':
+                return { url: 'FillInTheBlanks' };
+            case 'FIGURE_LABELING':
+                return { url: 'MultipleChoice' };
+            case 'HOT_SPOT':
+                return { url: 'MultipleChoice' };
+            case 'GRAPHIC_OPTION':
                 return { url: 'MultipleChoice' };
             default:
                 break;
@@ -97,7 +110,6 @@ export class CoreComponent implements OnInit {
     getJsonFile() {
         this.coreService.getJSON().subscribe(data => {
             this.quizJsonData = data['items'];
-            console.log('data>>>', this.quizJsonData);
         });
     }
     getStudents() {

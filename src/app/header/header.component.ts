@@ -34,8 +34,6 @@ export class HeaderComponent implements OnInit {
     if (value) {
       this._configure = value;
       this.questionDetails = this.initialiseQuestionDetails(value.totalQuestions);
-      console.log('all questions', this.questionDetails);
-      console.log('header cofogurew', value);
     } else {
       this._configure = null;
     }
@@ -47,9 +45,8 @@ export class HeaderComponent implements OnInit {
   @Input('headerData') set headerData(value: Array<any>) {
     if (value) {
       this._headerData = value;
-      console.log('headers data', value);
     } else {
-      console.log('i am null', value);
+     
       this._headerData = null;
     }
   }
@@ -77,7 +74,6 @@ export class HeaderComponent implements OnInit {
       if (this.questionDetails[0]) {
 
         this.questionDetails[0].questionTime++;
-        console.log('new time', this.questionDetails[0].questionTime);
       }
       // if(self.stopPooling){obj.unsubscribe();}
     });
@@ -92,7 +88,6 @@ export class HeaderComponent implements OnInit {
   initialiseQuestionDetails(numberOfQuestions: number): Array<any> {
     const questionsDetails = [];
     for (let i = 0; i < numberOfQuestions; i++) {
-      console.log(i);
       questionsDetails.push({
         questionTime: 0,
         isAnswered: false,
@@ -113,7 +108,7 @@ export class HeaderComponent implements OnInit {
       if (this.questionDetails[questionIndex]) {
 
         this.questionDetails[questionIndex].questionTime++;
-        console.log('new time', this.questionDetails[questionIndex].questionTime);
+     
       }
       // if(self.stopPooling){obj.unsubscribe();}
     });

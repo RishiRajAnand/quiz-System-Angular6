@@ -3,6 +3,7 @@ import { _throw } from 'rxjs/observable/throw';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map, catchError } from 'rxjs/operators';
+import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs';
 import 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
@@ -10,13 +11,26 @@ import { Observer } from 'rxjs/Observer';
   providedIn: 'root'
 })
 export class CoreService {
+  questionList:  Array<any> = [];
   qns: any = [];
   timer: any;
   seconds: any;
   qnProgress: any;
   constructor(private httpClient: HttpClient) { }
+
+  getQuestionDetails(questionIndex: number) {
+    console.log('intialised questions', this.questionList, questionIndex);
+    return this.questionList[questionIndex];
+  }
+  initialiseQuestionsList(): Observable<any> {
+     return this.httpClient.get('./assets/Questions.json').map((data) => {
+      this.questionList = data['items'];
+      return data['items'];
+    });
+  }
   getJSON() {
     return this.httpClient.get('./assets/Questions.json').map((data) => {
+      
       return data;
     });
 }
