@@ -1,0 +1,34 @@
+<!-- <h3>{{dataMessage[0].promptText}}</h3>
+<ul class="collection answer">
+  <ng-container *ngFor="let option of dataMessage[0].choiceInteraction.simpleChoices;let i = index">
+    <div *ngIf="option != null">
+      <input type="checkbox" (change)="clearUserAction($event)" id="userActions" [value]="option.choiceId"> {{option.label}}
+    </div>
+  </ng-container>
+</ul>
+<ng-container *ngIf="message == true">
+  <div class="alert alert-danger">
+    <strong>Your Response:</strong>
+  </div>
+  <div class="alert alert-success">
+    <strong>Correct Response:</strong>
+    <ng-container *ngFor="let item of dataMessage[0].choiceInteraction.simpleChoices;let j = index">
+      <div>
+        {{item.label}}
+      </div>
+    </ng-container>
+  </div>
+  <p>
+    <strong>Rationale:</strong>
+    <span>{{dataMessage[0].modelFeedback[0].feedbackText}}</span>
+  </p>
+  <div>
+    <strong>Remediation:</strong>
+    <div *ngFor="let Remediation of dataMessage[0].remediationLinks; let k = index">
+      <a *ngIf="Remediation.linkTypeId == 1" target="_blank" href="{{Remediation.linkText2}}">{{Remediation.linkText1}}</a>
+      <span *ngIf="Remediation.linkTypeId != 1"> {{Remediation.linkText1}}</span>
+    </div>
+  </div>
+</ng-container> -->
+
+<h1> Multiple choice</h1>
